@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeimy | Planificador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Jeimy</p>
+        <h1>Jeimy</h1>
+        <p class="subtitle">Organiza tus semanas y meses de forma sencilla.</p>
+      </div>
+      <div class="backup-actions">
+        <button id="saveBackup" class="btn btn-pink">💾 Guardar copia</button>
+        <button id="restoreBackup" class="btn btn-mint">📥 Restaurar</button>
+        <input id="backupFile" type="file" accept=".json,application/json" hidden>
+      </div>
+    </header>
+
+    <section class="toolbar">
+      <div class="navigation">
+        <button id="prevBtn" class="icon-btn" aria-label="Anterior">‹</button>
+        <button id="todayBtn" class="btn btn-light">Hoy</button>
+        <button id="nextBtn" class="icon-btn" aria-label="Siguiente">›</button>
+      </div>
+
+      <h2 id="periodTitle"></h2>
+
+      <div class="view-switcher">
+        <button id="weekViewBtn" class="view-btn active">Semana</button>
+        <button id="monthViewBtn" class="view-btn">Mes</button>
+      </div>
+    </section>
+
+    <section id="calendar" class="calendar"></section>
+
+    <p id="status" class="status" aria-live="polite"></p>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">NUEVA ACTIVIDAD</p>
+          <h2 id="modalTitle">Agregar actividad</h2>
+        </div>
+        <button id="closeModal" class="close-btn" type="button">×</button>
+      </div>
+
+      <form id="activityForm">
+        <input id="activityId" type="hidden">
+
+        <label>
+          Actividad
+          <input id="activityTitle" type="text" maxlength="100"
+                 placeholder="Ej. Reunión, estudiar, gimnasio..." required>
+        </label>
+
+        <div class="form-row">
+          <label>
+            Fecha
+            <input id="activityDate" type="date" required>
+          </label>
+          <label>
+            Hora
+            <input id="activityTime" type="time" required>
+          </label>
+        </div>
+
+        <label>
+          Nota <span>(opcional)</span>
+          <textarea id="activityNote" maxlength="250"
+                    placeholder="Agrega algún detalle..."></textarea>
+        </label>
+
+        <div class="modal-actions">
+          <button id="cancelModal" class="btn btn-light" type="button">Cancelar</button>
+          <button class="btn btn-primary" type="submit">Guardar actividad</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
